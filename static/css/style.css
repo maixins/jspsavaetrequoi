@@ -1,0 +1,129 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    overflow: hidden;
+    background-color: #444654;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 2px;
+    background-color: #444654;
+    color: #fff;
+    padding: 10px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+.header img {
+    border-radius: 50%;
+    height: 70px;
+    grid-area: 1 / 1 / 3 / 2;
+}
+.header h1 {
+    text-align: center;
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.research {
+    height: 0px;
+    display: flex;
+    justify-content: center;
+    margin-top: -10vh;
+    z-index: 2;
+}
+.research input {
+  width: 300px;
+  text-align: center;
+
+}
+
+.param {
+  margin-right: 20px;
+  grid-area: 1 / 3 / 3 / 4;
+  text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 80px;
+    text-align: center;
+}
+
+.left {
+    background-color: #21285a;
+    flex-basis: 25%;
+    height: calc(100vh - 80px);
+    position: fixed;
+    left: 0;
+    top: 85px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.middle {
+    background-color:#46ad65 ;
+    flex-basis: 50%;
+    height: calc(100vh - 320px);
+    margin: 0 auto;
+    overflow-y: scroll;
+    padding: 25px;
+    z-index: 2;
+}
+
+.middle h2 {
+    margin-top: -5.5px;
+}
+
+
+.right {
+    background-color:#21285a;
+    flex-basis: 25%;
+    height: calc(100vh - 80px);
+    position: fixed;
+    right: 0;
+    top: 85px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.message-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.profile-pic-holder {
+  margin-right: 15px;
+}
+
+.profile-pic {
+    border-radius: 50%;
+    width: 45px;
+}
+
+.message-content {
+    max-width: 450px;
+    word-wrap: break-word;
+}
+.read {
+    background-color: #2825E4;
+    border-radius: 20px;
+}
+
+.unread {
+    background-color: #D2EFFF ;
+    border-radius: 20px;
+}
+
