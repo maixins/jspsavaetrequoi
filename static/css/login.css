@@ -1,0 +1,67 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f6f8fa;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-box {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+}
+
+.login-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-box input[type="username"],
+.login-box input[type="password"] {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding-left: 12px; /* Ajout du padding à gauche */
+  padding-right: 12px; /* Ajout du padding à droite */
+}
+
+
+.login-box button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #0366d6;
+  border: 0;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.Bregister  {
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+  
+}
+
+.rep {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-bottom: 10px;
+  padding-bottom:10px;
+  color:#ff2424;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
