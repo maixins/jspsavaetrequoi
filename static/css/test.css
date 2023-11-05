@@ -1,16 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
-*{
-  font-family: 'poppins',sans-serif;
-  box-sizing: border-box;
-}
 body {
   margin: 0;
   padding: 0;
   background: linear-gradient(98.3deg, rgb(109, 44, 44) 10.6%, rgb(255, 0, 0) 97.7%);
   overflow: hidden;
 }
-
-
 
 .content {
   margin-left: 200px;
@@ -21,21 +14,14 @@ body {
   color: #444654;
 }
 
-.middle {
-  background-color:transparent;
-  border-color:white;
-  border-radius:5px;
-  margin: 30px;
-  padding: 20px;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
-  overflow-y: scroll;
-  flex-basis: 50%;
-  height: calc(90vh - 280px);
-  bottom:50px;
-
+.center {
+    margin: auto;
+    width: 40%;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#middle::-webkit-scrollbar {
+.hideform {
     display: none;
 }
 
@@ -50,24 +36,18 @@ body {
   color: #fff;
   border:5px;
   border-color:white;
-  border-radius:5px;
   bottom:50px;
 }
 
 .profile-pic-holder {
   margin-right: 15px;
 }
-.sendBTN {
-  margin-right: 15px;
-  border-radius:5px;
-  width:25px;
-  height:40px;
-}
 
 .profile-pic {
   border-radius: 50%;
   width: 45px;
 }
+
 .message-content {
   max-width: 95%;
   word-wrap: break-word;
@@ -77,15 +57,16 @@ body {
 
 }
 
-
 .new-input {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
 
-.new-input #myInput {
+.new-input #messageInput {
   width:50%;
+  left:25%;
+  position:absolute;
   text-align: center;
   padding: 5px;
   border: 2px solid #fff; 
@@ -104,6 +85,7 @@ body {
   cursor: pointer;
   font-size: 16px;
 }
+
 .new-input #file {
   margin-left: 10px;
   background-color: #0366d6;
@@ -115,55 +97,57 @@ body {
   font-size: 16px;
 }
 
-
-.clear{
-  margin-left: 10px;
-  background-color: #ffffff;
-  color: #000000;
-  border: 0;
-  padding: 10px 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 16px;
-  bottom:400px;
-}
-
-.suppr{
-  margin-left: 10px;
-  background-color: #ffffff;
-  color: #000000;
-  border: 0;
-  padding: 10px 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 16px;
-  bottom:400px;
-}
-
-.profile-pic{
-  display:block;
-  transition: .5s ease;
-  backface-visibility: hidden;
-  opacity:1;
+.sendButton{
+  position:absolute;
+  width:5%;
+  text-align: center;
+  border-radius: 20px; 
+  font-size: 16px; 
+  outline: none; 
+  left:75%;
+  background:grey;
   cursor:pointer;
+  margin-right: 15px;
+  height:40px;
+
+  margin-left: 10px;
+  background-color: #0366d6;
+  color: #fff;
+  border: 0;
+  padding: 10px 20px;
+
 }
 
-
-.profile-pic-holder:hover .profile-pic {
-  opacity: 0.3;
+.sendButton:hover{
+  opacity:0.8;
 }
 
-.content {
-  margin-left: 200px;
+.messageContainer{
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: transparent;
+  border-radius: 20px;
+  color: #fff;
+  border:5px;
+  border-color:white;
+}
+
+.middle {
+  background-color:transparent;
+  border-color:white;
+  border-radius:5px;
+  margin: 30px;
   padding: 20px;
-  right:50%;
-  top:50%;
-
-  color: #444654;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+  overflow-y: scroll;
+  flex-basis: 50%;
+  height: calc(90vh - 280px);
+  bottom:50px;
 }
 
-h2{
-  color:#fff;
-  position:relative;
-  left:50px;
+#middle::-webkit-scrollbar {
+    display: none;
 }

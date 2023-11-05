@@ -1,0 +1,142 @@
+{% extends "template.html" %}
+{% block title %}DM{% endblock %}
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/test.css') }}">
+<script src="{{url_for('static',filename='javascript/profil.js')}} "></script>
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+{% block content %}
+
+<div class="content">
+  <div>
+    <h2>Conversation avec {{target}}</h2>
+    <p style="display:none;"">Room ID: {{ room_id }}</p>
+  </div>
+  <div class="middle" id="middle">
+    {% for id in ids %}
+    <div class="message-container">
+      <div class="profile-pic-holder">
+        <a href="/profil?targetuser={{ id['name'] }}">
+          <img class="profile-pic" src="{{id['profile_pic']}}" alt="">
+        </a>
+      </div>
+      <div class="message-content">
+        <p>{{ id['name'] }} : {{id['content']}}</p>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+
+  <div class="new-input">
+    <input id="messageInput" class="messageInput" type="text" placeholder="Ecrivez donc un message !">
+    <button id="sendMessageButton" class="sendButton">
+      <ion-icon name="send-outline"></ion-icon>
+    </button>
+
+  </div>
+
+  <div></div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+<script>
+  var socket = io.connect('https://server-webtest.roussellecyril.repl.co/');
+
+  var room_id = '{{ room_id }}';
+  socket.emit('join', room_id);
+
+  socket.on('private_message', function (data) {
+    if (data == "refresh") {
+      window.location.reload();
+      return
+    }
+
+    if (document.hidden) {
+      var nomPage = document.title;
+      if (localStorage.getItem('compteur')) {
+        compteur = parseInt(localStorage.getItem('compteur')) + 1; 
+      } else {
+        compteur = 1;
+      }
+      document.title = "Message(s) : " + compteur;
+      localStorage.setItem('compteur', compteur);
+    }
+
+    var newDiv = document.createElement('div');
+    newDiv.classList.add('message-container');
+    var profilePicHolder = document.createElement('div');
+    profilePicHolder.classList.add('profile-pic-holder');
+
+    var profilePic = document.createElement('img');
+    profilePic.classList.add('profile-pic');
+    profilePic.src = data.profile_pic;
+
+    var profileLink = document.createElement('a');
+    profileLink.href = '/profil?targetuser=' + data.name;
+    profileLink.appendChild(profilePic);
+    profilePicHolder.appendChild(profileLink); 
+
+    var messageContent = document.createElement('div');
+    messageContent.classList.add('message-content');
+
+    var messageParagraph = document.createElement('p');
+    messageParagraph.textContent = data.name + ' : ' + data.content;  
+
+    messageContent.appendChild(messageParagraph);
+
+    newDiv.appendChild(profilePicHolder);
+    newDiv.appendChild(messageContent);
+
+    var messagesContainer = document.getElementById('middle');
+    messagesContainer.appendChild(newDiv);
+
+    var middleDiv = document.getElementById('middle');
+    middleDiv.scrollTop = middleDiv.scrollHeight;
+
+  });
+
+
+  window.addEventListener("beforeunload", function (event) {
+    socket.emit('leave', room_id);
+  });
+
+  document.addEventListener("visibilitychange", updateTitle);
+  function updateTitle() {
+      compteur = 0;
+      document.title = "Chat";
+    localStorage.setItem('compteur', compteur);
+  }
+
+  document.querySelector('#sendMessageButton').addEventListener('click', function() {
+      var messageInput = document.querySelector('#messageInput');
+      var message = messageInput.value;
+      messageInput.value = '';
+      var room_id = '{{ room_id }}';
+      socket.emit('private_message', { room_id: room_id, message: message });
+  });
+
+
+  $('#messageInput').on('keydown', function(event) {
+    if (event.key === 'Enter') {
+      var messageInput = document.querySelector('#messageInput');
+      var message = messageInput.value;
+      messageInput.value = '';
+      var room_id = '{{ room_id }}';
+      socket.emit('private_message', { room_id: room_id, message: message });
+      event.preventDefault();
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    var middleDiv = document.getElementById('middle');
+    middleDiv.scrollTop = middleDiv.scrollHeight;
+  });
+
+</script>
+
+{% endblock %}

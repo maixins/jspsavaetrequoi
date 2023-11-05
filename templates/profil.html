@@ -1,0 +1,53 @@
+{% extends "template.html" %}
+{% block title %}Profil{% endblock %}
+{% block head %}
+  {{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/profil.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/template.css') }}">
+<script src="{{url_for('static',filename='javascript/profil.js')}} "></script>
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+{% block content %}
+
+    <h1 class="nom">{{username}}</h1>
+    <form class="barre" method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+      <label for="img" class="labelImg">
+        <div class="containerpdp">
+
+          <input type="file" name="file" id="img" style="display:none;" onchange="form.submit()"  accept="image/*" required>
+          <img class="pdp"  src="static/temp-img/{{pdp}}">
+          
+          <div class="middlepdp">
+            <ion-icon class="pencil-outline" name="pencil-outline"></ion-icon>
+          </div>
+        </div>
+      </label>
+    </form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <div class="center hideform">
+      <button id="close" style="float: right;" class="closeBtn">X</button>
+          <input type="text" name="firstname" placeholder="Nouveau pseudo" id="inTest">
+     <button id="confirmButton" class="confirmButton">Confirmer</button>
+
+
+  </div>
+  <button id="show"class="changePseudoBtn">Changer de pseudo</button>
+  <script>
+  $('#show').on('click', function () {
+      $('.center').show();
+      $(this).hide();
+  })
+
+  $('#close').on('click', function () {
+      $('.center').hide();
+      $('#show').show();
+  })
+  </script>
+
+      
+    
+  
+  
+{% endblock %}

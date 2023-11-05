@@ -1,0 +1,28 @@
+{% extends "template.html" %}
+{% block title %}Profil{% endblock %}
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/profilautre.css') }}">
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+{% block content %}
+
+<script src="{{url_for('static', filename='javascript/profilautre.js')}}"></script>
+    <h1 class="nom">{{targetuser}}</h1>
+
+      <label for="img" class="labelImgautre">
+        <div class="containerpdp">
+          <div class="form-group">
+          <img class="pdpautre"  src="static/temp-img/{{targetpdp}}">
+          <div class="middlepdp"></div>
+        </div>
+      </label>
+
+
+      <div class='profilcontent'>
+        <button class="addFriendButton" id="addFriendButton">Ajouter en ami</button>
+        <button class="blockUser" id="blockUser">Bloquer</button>
+      </div>
+{% endblock %}
