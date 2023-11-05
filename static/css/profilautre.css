@@ -1,0 +1,46 @@
+.pdpautre{
+  width:120px;
+  border-radius:70px;
+  position:absolute;
+  left:280px;
+  top:10%;
+  cursor:pointer;
+  display:block;
+}
+.nom{
+  color:white;
+  position:relative;
+  left:410px;
+  top:9%;
+  font-size:50px;
+}
+
+.addFriendButton{
+  background-color:white;
+  border: 0;
+  color:black;
+  border-radius:40px;
+  width:100px;
+  height:40px;
+  left:350px;
+  position:relative;
+  top:2%;
+  cursor:pointer;
+  transition-duration:0.5s;
+}
+.blockUser{
+  background-color:white;
+  border: 0;
+  color:black;
+  border-radius:40px;
+  width:100px;
+  height:40px;
+  left:351px;
+  position:absolute;
+  top:10%;
+  cursor:pointer;
+  transition-duration:0.5s;
+}
+.profilcontent button:hover{
+  opacity:0.8;
+}
